@@ -1,0 +1,79 @@
+import React, { Component } from 'react';
+
+export default class Filter extends Component {
+  // 3 main divs:
+  // total#of products, order of new-old & filter by size
+  render() {
+    return (
+      <div className='filter'>
+        <div className='filter-result'>{this.props.count} Products</div>
+        <div className='filter-sort'>
+          Order{' '}
+          <select value={this.props.sort} onChange={this.props.sortProducts}>
+            <option>Latest</option>
+            <option value='lowest'>Lowest</option>
+            <option value='highest'>Highest</option>
+          </select>
+        </div>
+        <div className='filter-size'>
+          Filter{' '}
+          <select value={this.props.size} onChange={this.props.filterProducts}>
+            <option value=''>ALL</option>
+            <option value='XS'>XS</option>
+            <option value='S'>S</option>
+            <option value='M'>M</option>
+            <option value='L'>L</option>
+            <option value='XL'>XL</option>
+          </select>
+        </div>
+      </div>
+    );
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+important dependencies for ecommerce
+npm install @material-ui/core @material-ui/icons @chec/commerce.js @stripe/react-stripe-js @stripe/stripe-js
+
+@stripe/stripe-js react-router-dom react-hook-form
+
