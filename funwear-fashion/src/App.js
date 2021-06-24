@@ -11,11 +11,19 @@ class App extends React.Component {
     this.state = {
       products: data.products,
       //by default there is no item in cart
-      cartItems: [],
+      //cartItems: [], we change JSON.parse to reverse JSON.stringify
+      cartItems: localStorage.getItem('cartItems')
+        ? JSON.parse(localStorage.getItem('cartItems'))
+        : [], //else empty array
+      //have to check if string cartItems exists => parse it, else []
       size: '', //filter thru all sizes
       sort: '', //sort thru $ and $$$
     };
   }
+  //parent component is responsible for saving the order
+  createOrder = (order) => {
+    alert('Need to save order for ' + order.name);
+  };
 
   //SORT METHOD ON LOWEST/HIGHEST/NEWEST
   sortProducts = (event) => {
@@ -27,22 +35,20 @@ class App extends React.Component {
       sort: sort,
       //need to get access to filtered product
       //create a clone of array
-      products: this.state.products
-        .slice()
-        .sort((a, b) =>
-          sort === 'lowest'
-            ? a.price > b.price
-              ? 1
-              : -1
-            : sort === 'highest'
-            ? a.price < b.price
-              ? 1
-              : -1
-              //newest _id is greater num than the oldest one
-            : a._id < b._id
+      products: this.state.products.slice().sort((a, b) =>
+        sort === 'lowest'
+          ? a.price > b.price
             ? 1
             : -1
-        ),
+          : sort === 'highest'
+          ? a.price < b.price
+            ? 1
+            : -1
+          : //newest _id is greater num than the oldest one
+          a._id < b._id
+          ? 1
+          : -1
+      ),
     }));
   };
 
@@ -87,10 +93,11 @@ class App extends React.Component {
     if (!alreadyInCart) {
       //instead of having product we are using the fields of prods using spread to get the fields - an instance of this product
       cartItems.push({ ...product, count: 1 });
-    }//after adding new items we need to update state
+    } //after adding new items we need to update state
     this.setState({ cartItems });
-    //to make the cart stay PRESERVED => after adding items and setting state, use setItem(key: string, value: string) but since cartItems is an OBJECT so we use JSON.stringify to convert obj to string
-    localStorage.setItem('cartItems', JSON.stringify())
+    //to make the cart stay PRESERVED => after adding items and setting state, use setItem(key: string, value: string) but since cartItems is an OBJECT so we use JSON.stringify to convert obj to string AS WELL AS REMOVING THE ITEMS TOO
+    //this.state
+    localStorage.setItem('cartItems', JSON.stringify(this.state.cartItems));
   };
 
   //REMOVE FROM CART
@@ -99,7 +106,12 @@ class App extends React.Component {
     const cartItems = this.state.cartItems.slice();
     this.setState({
       cartItems: cartItems.filter((x) => x._id !== product._id),
-    });
+    }); //have to preserve the cart for remove as well
+    localStorage.setItem(
+      'cartItems',
+      //this is the value that we set inside the cart item on l ine 104
+      JSON.stringify(cartItems.filter((x) => x._id !== product._id))
+    );
   };
 
   render() {
@@ -129,12 +141,11 @@ class App extends React.Component {
             </div>
             <div className='sidebar'>
               <Cart
-
-              //the cartItems comes from this.state.cartItems
+                //the cartItems comes from this.state.cartItems
                 cartItems={this.state.cartItems}
                 removeFromCart={this.removeFromCart}
+                createOrder={this.createOrder}
               />
-
             </div>
           </div>
         </main>

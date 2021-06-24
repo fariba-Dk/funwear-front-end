@@ -8,29 +8,31 @@ export default class Cart extends Component {
       name: '',
       email: '',
       address: '',
-      showCheckout: false,
+      showCheckout: false, //by default we do not like to show checkout unless user click on Proceed
     };
   }
-  handleInput = (e) => {
-    this.setState({ [e.target.name]: e.target.value });
+
+  handleInput = (event) => {
+    this.setState({ [event.target.name]: event.target.value });
   };
-  createOrder = (e) => {
-    e.preventDefault();
+  //onSubmit handler - we use preventDefault because we don't want to refresh the page when user is clicking on submit
+  createOrder = (event) => {
+    event.preventDefault();
     const order = {
       name: this.state.name,
       email: this.state.email,
       address: this.state.address,
       cartItems: this.props.cartItems,
     };
-    this.props.createOrder(order);
+    this.props.createOrder(order);//pass in order object = this is not responsible for saving this the PARENT at App.js should
   };
-  render() {
 
+  render() {
     const { cartItems } = this.props; //deconstructing assignment
     //from parent component,we get cartItems here, if method
     return (
       <div>
-        {cartItems.length === 0 ? (//1st div: showing cart-data
+        {cartItems.length === 0 ? ( //1st div: showing cart-data
           //if cartItem is empty
           //using 2 className here 1. cart 2. cart-header
           <div className='cart cart-header'>Cart is empty</div>
@@ -70,7 +72,7 @@ export default class Cart extends Component {
               )}
             </ul>
           </div>
-          {cartItems.length !== 0 && (//this allows for hidden button => use conditional rendering=> if !== 0 else its empty
+          {cartItems.length !== 0 && ( //this allows for hidden button => use conditional rendering=> if !== 0 else its empty
             <div>
               <div className='cart'>
                 <div className='total'>
@@ -83,6 +85,7 @@ export default class Cart extends Component {
                   </div>
                   <button
                     onClick={() => {
+                      //when user click on button Proceed, we need to update === setState to true ** make sure to add to this.state in constructor showCheckout: false === we do not want to show check out by default
                       this.setState({ showCheckout: true });
                     }}
                     className='button primary'
@@ -91,7 +94,7 @@ export default class Cart extends Component {
                   </button>
                 </div>
               </div>
-              {this.state.showCheckout && (
+              {this.state.showCheckout && ( //if it is true => proceed to <div and create FORM and an onSubmit button
                 <div className='cart'>
                   <form onSubmit={this.createOrder}>
                     <ul className='form-container'>
@@ -100,7 +103,9 @@ export default class Cart extends Component {
                         <input
                           name='email'
                           type='email'
-                          required
+                          required //it is required and onChange we define a function to handle input
+                          //when user click on handle input we need to create a function handleInput
+                          //a method function that accepts an event and we can access
                           onChange={this.handleInput}
                         ></input>
                       </li>
@@ -109,7 +114,7 @@ export default class Cart extends Component {
                         <input
                           name='name'
                           type='text'
-                          required
+                          required //it is required and onChange we define a function to handle input
                           onChange={this.handleInput}
                         ></input>
                       </li>

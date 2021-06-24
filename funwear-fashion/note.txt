@@ -30,8 +30,10 @@ Cart Commponent
 -- Cart.js
 1. Make cart items to stay preserved when we refresh the page
 2. Use LocalStorage on addToCart to save cart items (JSON.stringify)
+
 3. Handle Click on Process
 4. Update showCheckout state to true on click
+
 5. Conditional rendering Checkout Form
 6. Get client info - Email, Name, Address input
 7. Define Checkout Button
