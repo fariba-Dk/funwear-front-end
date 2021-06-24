@@ -89,6 +89,8 @@ class App extends React.Component {
       cartItems.push({ ...product, count: 1 });
     }//after adding new items we need to update state
     this.setState({ cartItems });
+    //to make the cart stay PRESERVED => after adding items and setting state, use setItem(key: string, value: string) but since cartItems is an OBJECT so we use JSON.stringify to convert obj to string
+    localStorage.setItem('cartItems', JSON.stringify())
   };
 
   //REMOVE FROM CART
