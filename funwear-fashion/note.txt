@@ -1,35 +1,29 @@
-import React, { Component } from 'react';
+coupon tag
+ <img src='public/images/discount-pic.gif' alt=""></img>
 
-export default class Filter extends Component {
-  // 3 main divs:
-  // total#of products, order of new-old & filter by size
-  render() {
-    return (
-      <div className='filter'>
-        <div className='filter-result'>{this.props.count} Products</div>
-        <div className='filter-sort'>
-          Order{' '}
-          <select value={this.props.sort} onChange={this.props.sortProducts}>
-            <option>Latest</option>
-            <option value='lowest'>Lowest</option>
-            <option value='highest'>Highest</option>
-          </select>
-        </div>
-        <div className='filter-size'>
-          Filter{' '}
-          <select value={this.props.size} onChange={this.props.filterProducts}>
-            <option value=''>ALL</option>
-            <option value='XS'>XS</option>
-            <option value='S'>S</option>
-            <option value='M'>M</option>
-            <option value='L'>L</option>
-            <option value='XL'>XL</option>
-          </select>
-        </div>
-      </div>
-    );
-  }
-}
+Cart Commponent
+1. Create Cart Component in src
+
+2. ~~~~~ in Product.js
+3. Handle 'Add To Cart' to this.props.addToCart(product)
+
+4. ~~~~~~ in App.js
+5. Add cartItems to state as []
+6. Create addToCart(product)
+7. Slice, Check product, if exists add to cartItems using forEach method
+8. Set a flag alreadyInCart = false
+9. push to cartItems the item and use spread-operator to get a field of product and add an instance of this product with a count=1 to cartItems
+10. Finally setState to update the state
+
+ ~~~~~~ in Cart.js
+11. Define cartItems, order form this.props
+12. Check cartItems.length and show "message"
+13. List cartItems {cartItems.length > 0 && ()}
+14. index.css adjustments
+15. Style cart, cart-header and cart-items (img, li)
+
+16. Use LocalStorage on App constructor to load cart itmes (JSON.parse)
+17. Use LocalStorage on addToCart to save cart items (JSON.stringify)
 
 
 
