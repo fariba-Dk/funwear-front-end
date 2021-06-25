@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import formatCurrency from '../util';
+import Fade from 'react-reveal/Fade'
 
 export default class Cart extends Component {
   constructor(props) {
@@ -44,33 +45,35 @@ export default class Cart extends Component {
         )}
         <div>
           <div className='cart'>
-            <ul className='cart-items'>
-              {cartItems.map(
-                (
-                  item //2nd div: showing cart-data
-                ) => (
-                  //we map thru cartItems and convert cartItems to li elms; here we set key=item._id and inside the li we need to form rows for: image & title & price - all with dif <div> + a button to remove any items - IMP: make it an arrow func
-                  //NOTE: we use item which is element of cartItems not the cartItems itself
-                  <li key={item._id}>
-                    <div>
-                      <img src={item.image} alt={item.title}></img>
-                    </div>
-                    <div>
-                      <div>{item.title}</div>
-                      <div className='right'>
-                        {formatCurrency(item.price)} x {item.count}{' '}
-                        <button
-                          className='button'
-                          onClick={() => this.props.removeFromCart(item)}
-                        >
-                          Remove
-                        </button>
+            <Fade left cascade>
+              <ul className='cart-items'>
+                {cartItems.map(
+                  (
+                    item //2nd div: showing cart-data
+                  ) => (
+                    //we map thru cartItems and convert cartItems to li elms; here we set key=item._id and inside the li we need to form rows for: image & title & price - all with dif <div> + a button to remove any items - IMP: make it an arrow func
+                    //NOTE: we use item which is element of cartItems not the cartItems itself
+                    <li key={item._id}>
+                      <div>
+                        <img src={item.image} alt={item.title}></img>
                       </div>
-                    </div>
-                  </li>
-                )
-              )}
-            </ul>
+                      <div>
+                        <div>{item.title}</div>
+                        <div className='right'>
+                          {formatCurrency(item.price)} x {item.count}{' '}
+                          <button
+                            className='button'
+                            onClick={() => this.props.removeFromCart(item)}
+                          >
+                            Remove
+                          </button>
+                        </div>
+                      </div>
+                    </li>
+                  )
+                )}
+              </ul>
+            </Fade>
           </div>
           {cartItems.length !== 0 && ( //this allows for hidden button => use conditional rendering=> if !== 0 else its empty
             <div>
@@ -95,46 +98,48 @@ export default class Cart extends Component {
                 </div>
               </div>
               {this.state.showCheckout && ( //if it is true => proceed to <div and create FORM and an onSubmit button
-                <div className='cart'>
-                  <form onSubmit={this.createOrder}>
-                    <ul className='form-container'>
-                      <li>
-                        <label>Email</label>
-                        <input
-                          name='email'
-                          type='email'
-                          required //it is required and onChange we define a function to handle input
-                          //when user click on handle input we need to create a function handleInput
-                          //a method function that accepts an event and we can access
-                          onChange={this.handleInput}
-                        ></input>
-                      </li>
-                      <li>
-                        <label>Name</label>
-                        <input
-                          name='name'
-                          type='text'
-                          required //it is required and onChange we define a function to handle input
-                          onChange={this.handleInput}
-                        ></input>
-                      </li>
-                      <li>
-                        <label>Address</label>
-                        <input
-                          name='address'
-                          type='text'
-                          required
-                          onChange={this.handleInput}
-                        ></input>
-                      </li>
-                      <li>
-                        <button className='button primary' type='submit'>
-                          Checkout
-                        </button>
-                      </li>
-                    </ul>
-                  </form>
-                </div>
+                <Fade right cascade>
+                  <div className='cart'>
+                    <form onSubmit={this.createOrder}>
+                      <ul className='form-container'>
+                        <li>
+                          <label>Email</label>
+                          <input
+                            name='email'
+                            type='email'
+                            required //it is required and onChange we define a function to handle input
+                            //when user click on handle input we need to create a function handleInput
+                            //a method function that accepts an event and we can access
+                            onChange={this.handleInput}
+                          ></input>
+                        </li>
+                        <li>
+                          <label>Name</label>
+                          <input
+                            name='name'
+                            type='text'
+                            required //it is required and onChange we define a function to handle input
+                            onChange={this.handleInput}
+                          ></input>
+                        </li>
+                        <li>
+                          <label>Address</label>
+                          <input
+                            name='address'
+                            type='text'
+                            required
+                            onChange={this.handleInput}
+                          ></input>
+                        </li>
+                        <li>
+                          <button className='button primary' type='submit'>
+                            Checkout
+                          </button>
+                        </li>
+                      </ul>
+                    </form>
+                  </div>
+                </Fade>
               )}
             </div>
           )}

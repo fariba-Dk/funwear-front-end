@@ -41,6 +41,32 @@ Cart Commponent
 9. Create order object and pass to parent to handle it
 10. Publish changes
 
+~~~~~~~~~~~ Animations ~~~~~~~~~~~~  npm install react-reveal
+1. Loading animation but->top
+****  <Fade bottom cascade={true}> allows to have products load one by one
+
+2. Adding an item to cart L->R
+
+
+3. Proceed R->L
+4. Zoom animatiion on single photo
+
+1. Install react-reaveal
+2. Create fade effect from bottom to top for products
+3. Creat fade left for add to cart
+4. Create fade right for show checkout form
+
+~~~~~~~~~~~ Modal ~~~~~~~~~~~~  npm install react-Modal
+5. install react-Modal // Open images by clicking on image
+- Product.js
+6. Import Modal
+7. Set state for product tonull
+8. Define openModel and close Modal
+9. Show Modal if product exist
+10. Create Modal
+11. Create Zoom effect
+-- index.css
+
 
 
 
