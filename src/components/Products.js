@@ -32,7 +32,7 @@ export default class Products extends Component {
     return (
       //implement product list - arr - map method
       <div>
-        <Modal isOpen={showPromo} style={{ textAlign: 'center' }}>
+        <Modal className="promo" isOpen={showPromo} style={{ textAlign: 'center' }}>
           <button onClick={() => this.setState({ showPromo: false })}>x</button>
           <img
             src='/images/discount-pic.gif'

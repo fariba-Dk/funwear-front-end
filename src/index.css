@@ -39,6 +39,7 @@ a:hover {
 
 header {
   grid-area: header;
+  justify-content: space-between;
   background-color: #f94856;
   color: #ffffff;
   display: flex;
@@ -177,6 +178,9 @@ footer {
 form {
   width: 100%;
 }
+.promo{
+
+}
 .form-container {
   padding: 0;
   width: 100%;
@@ -233,7 +237,7 @@ input {
 .order-details .items {
   padding: 0;
   text-align: right;
-  
+
 }
 .success-message {
   color: green;

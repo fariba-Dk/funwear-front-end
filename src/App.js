@@ -130,6 +130,9 @@ class App extends React.Component {
       <div className='grid-container'>
         <header>
           <a href='/'>FunWear🌼Fashion</a>
+          <a href='#' alt='admin'>
+            Admin
+          </a>
         </header>
         <main>
           <div className='content'>
