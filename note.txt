@@ -83,9 +83,50 @@ Cart Commponent
   post/api/order
   delete/api/order
 
-2. front-end
 
-shein2.webp
+
+
+You should definitely keep the proxy file to test on localhost, to deploy you just need to add lines like this to your `server.js` (example here https://github.com/hpr/tweet-only-access/blob/main/server/index.js):
+
+app.use(express.static(path.join(__dirname, "../funwear-front-end/build")));
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "../funwear-front-end/build", "index.html"));
+});
+
+Then just make sure you have a suitable deploy script like this https://github.com/hpr/tweet-only-access/blob/main/deploy.sh that does `npm run build` on your front end before deploying, it can get complicated when you have a separate front+back end but is totally possible, would be happy to schedule another meeting if you can't figure it out
+Harry
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
