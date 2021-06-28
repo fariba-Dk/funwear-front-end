@@ -23,10 +23,14 @@ class App extends React.Component {
     };
   }
   async componentDidMount() {
-    const { data } = await axios.get('/api/products');
-    this.setState({
+    try{
+      const { data } = await axios.get('/api/products');
+      this.setState({
       products: data,
     });
+    }catch(error){
+      console.log(error)
+    }
   }
   //parent component is responsible for saving the order
   createOrder = (order) => {
