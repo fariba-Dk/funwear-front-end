@@ -45,11 +45,11 @@ export default class Cart extends Component {
         {cartItems.length === 0 ? ( //1st div: showing cart-data
           //if cartItem is empty
           //using 2 className here 1. cart 2. cart-header
-          <div className='cart cart-header'>Cart is empty</div>
+          <div className='cart cart-header'>Your cart is empty</div>
         ) : (
           //else if cart is not empty => show num of items
           <div className='cart cart-header'>
-            You have {cartItems.length} in the cart{' '}
+            You have {cartItems.length} items in your cart{' '}
           </div>
         )}
         {order.email && (
