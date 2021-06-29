@@ -1,6 +1,28 @@
+- TROUBLE SHOOTING:
+sudo killall node
+
+- Deployment
+https://create-react-app.dev/docs/deployment/
+npm run build
 
 
+- Mongo-atlas-connection-string
+mongodb+srv://faribadadko:1234@cluster0.8xybc.mongodb.net/myFirstDatabase?retryWrites=true&w=majority
 
+- heroku-deployment
+https://funwearfashion.herokuapp.com/ | https://git.heroku.com/funwearfashion.git
+
+aribadadko@Faribas-MacBook-Pro-2 funwear-back-end % heroku login
+heroku: Press any key to open up the browser to login or q to exit:
+Opening browser to https://cli-auth.heroku.com/auth/cli/browser/ff29044a-4cf1-4d41-917b-2cfb91761fcd?requestor=SFMyNTY.g2gDbQAAAA03Ni4xNzUuNjkuMjIzbgYA99hsWHoBYgABUYA.2aADqfBWEE97da-uqoQK7Y2nK3yZYc4KlIUIDNdO_oc
+
+Logging in... done
+Logged in as faribacodes@gmail.com
+
+faribadadko@Faribas-MacBook-Pro-2 funwear-back-end % heroku apps:create funwearfashion
+Creating ⬢ funwearfashion... done
+https://funwearfashion.herokuapp.com/ | https://git.heroku.com/funwearfashion.git
+faribadadko@Faribas-MacBook-Pro-2 funwear-back-end % git rm yarn.lock
 
 
 coupon tag
