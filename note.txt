@@ -1,10 +1,27 @@
-- TROUBLE SHOOTING:
-sudo killall node
+sf5KIyjfKQ6KVupz
 
+mongodb+srv://Fariba:sf5KIyjfKQ6KVupz@funwear-fashion.ugank.mongodb.net/myFirstDatabase?retryWrites=true&w=majority
+
+
+heroku apps:rename funwear
+
+https://developer.mongodb.com/how-to/use-atlas-on-heroku/
+
+
+- TROUBLE SHOOTING:
+sudo killall node ->for ALL node.js
+lsof -i tcp:5000 ->specifically for port 5000 -> kill 33857
+
+
+~~~~
+
+rm -rf .git
+
+~~~~
 - Deployment
 https://create-react-app.dev/docs/deployment/
 npm run build
-
+ cd Documents/My-projects/FunWear🌼Fashion
 
 - Mongo-atlas-connection-string
 mongodb+srv://faribadadko:1234@cluster0.8xybc.mongodb.net/myFirstDatabase?retryWrites=true&w=majority
